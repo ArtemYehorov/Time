@@ -27,6 +27,12 @@ public:
 	friend Time operator + (const Time& time, int sec);
 	friend istream& operator >> (istream& is, Time& original);
 	friend ostream& operator << (ostream& os, const Time& original);
+
+	Time& operator++();
+	Time operator++(int);
+
+	Time& operator --();
+	Time operator --(int);
 };
 
 
@@ -34,6 +40,3 @@ bool operator > (const Time& One, const Time& Two);
 bool operator < (const Time& One, const Time& Two);
 bool operator == (const Time& One, const Time& Two);
 bool operator != (const Time& One, const Time& Two);
-
-istream& operator >> (istream& is, Time& original);
-ostream& operator << (ostream& os, const Time& original);

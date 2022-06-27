@@ -2,23 +2,13 @@
 
 int main()
 {
-	Time a;
-	Time b;
-	if (a > b)
+	Time a(0,58,20);
+	
+	for (int i = 0; i < 2000; i++)
 	{
-		cout << "Yeeees!\n";
+		system("cls");
+		++a;
+		a.Print();
+		//Sleep(100);
 	}
-	else
-	{
-		cout << "Noooo((!\n";
-	}
-
-	a = a + 75600;
-
-	b.Print();
-	cout << "\n";
-	a.Print();
-
-	cin >> a >> b;
-	cout << a << "\n" << b;
 }

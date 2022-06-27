@@ -135,3 +135,83 @@ ostream& operator << (ostream& os, const Time& original)
 	os << original.hours << ":" << original.minutes << ":" << original.seconds << "\n";
 	return os;
 }
+
+Time& Time::operator++()
+{
+	++seconds;
+	if (seconds == 60)
+	{
+		seconds = 0;
+		minutes++;
+		if (minutes == 60)
+		{
+			minutes = 0;
+			hours++;
+			if (hours == 24)
+			{
+				hours = 0;
+			}
+		}
+	}
+	return *this;
+}
+Time Time::operator++(int)
+{
+	Time copy = *this;
+	++seconds;
+	if (seconds == 60)
+	{
+		seconds = 0;
+		minutes++;
+		if (minutes == 60)
+		{
+			minutes = 0;
+			hours++;
+			if (hours == 24)
+			{
+				hours = 0;
+			}
+		}
+	} // изменяем оригинал
+	return copy; // возвращаем копию
+}
+
+Time& Time::operator--()
+{
+	--seconds;
+	if (seconds < 0)
+	{
+		seconds = 59;
+		minutes--;
+		if (minutes < 0)
+		{
+			minutes = 59;
+			hours--;
+			if (hours < 0)
+			{
+				hours = 23;
+			}
+		}
+	}
+	return *this;
+}
+Time Time::operator--(int)
+{
+	Time copy = *this;
+	--seconds;
+	if (seconds < 0)
+	{
+		seconds = 59;
+		minutes--;
+		if (minutes < 0)
+		{
+			minutes = 59;
+			hours--;
+			if (hours < 0)
+			{
+				hours = 23;
+			}
+		}
+	} // изменяем оригинал
+	return copy; // возвращаем копию
+}
